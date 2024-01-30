@@ -7,7 +7,7 @@ const nextConfig = {
                 hostname: 'cdn.dummyjson.com',
             }
         ]
-    }
+    },
 }
 
 module.exports = nextConfig

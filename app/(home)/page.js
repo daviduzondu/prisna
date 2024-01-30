@@ -3,7 +3,10 @@ import Hero from "@/components/root/hero";
 import { bebasneue } from "@/components/ui/fonts";
 import { Suspense } from "react";
 import Trending from "./trending";
+// import
+import { db } from "@/lib/firebase/config";
 export default async function Page() {
+  // console.log(db);
   // console.log(products);
   return (
     <>
@@ -22,19 +25,19 @@ export default async function Page() {
 function CardSkeleton() {
   return (
     <div className="mt-10">
-      <div class="flex animate-pulse">
-        <div class="flex-shrink-0">
-          <span class="w-12 h-12 block bg-gray-200 rounded-full dark:bg-gray-700"></span>
+      <div className="flex animate-pulse">
+        <div className="flex-shrink-0">
+          <span className="w-12 h-12 block bg-gray-200 rounded-full dark:bg-gray-700"></span>
         </div>
 
-        <div class="ms-4 mt-2 w-full">
-          {/* <h3 class="h-4 bg-gray-200 rounded-full dark:bg-gray-700" style={{width: 40+"%"}}></h3> */}
+        <div className="ms-4 mt-2 w-full">
+          {/* <h3 className="h-4 bg-gray-200 rounded-full dark:bg-gray-700" style={{width: 40+"%"}}></h3> */}
 
-          <ul class="mt-5 space-y-3">
-            <li class="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
-            <li class="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
-            <li class="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
-            <li class="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
+          <ul className="mt-5 space-y-3">
+            <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
+            <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
+            <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
+            <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700"></li>
           </ul>
         </div>
       </div>

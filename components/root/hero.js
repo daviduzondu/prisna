@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="flex flex-col justify-center mt-5 ">
         <Image src={festival} className="absolute hidden lg:block hero-img" width={410} alt="Two women at a festival"/>
         <div className={`${bebasneue.className} lg:text-[140px] text-8xl z-10 mix-blend-overlay [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]`}>
-          Your Event <br className="hidden lg:block"></br> Command Center
+          Your Next-Level <br className="hidden lg:block"></br> Event  Command Center
         </div>
         <div className="lg:text-[30px] leading-snug text-2xl  tracking-normal z-10 [text-shadow:_0_1.2px_0_rgb(0_0_0_/_40%)]">
           Discover, book, and list event spaces seamlessly, all managed in one centralized platform.
