@@ -10,11 +10,11 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import Loading from "./loader";
 
 const navLinks = [
-  {
-    name: "Discover",
-    href: "/#discover",
-    auth: false,
-  },
+  // {
+  //   name: "Discover",
+  //   href: "/#discover",
+  //   auth: false,
+  // },
   {
     name: "Login",
     href: "/login",

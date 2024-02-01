@@ -44,7 +44,7 @@ export default function Listings({ user }) {
                   </span>
                   <span className="flex items-center gap-2">
                     <PartyPopper className="icon" />
-                    <div className="text-xl">{entry.type.replace(entry.type[0], entry.type[0].toUpperCase())}</div>
+                    <div className="text-xl">{entry.type.replace(entry.type[0], entry?.type[0]?.toUpperCase())}</div>
                   </span>
                 </div>
               </div>
