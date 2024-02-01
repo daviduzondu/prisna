@@ -7,7 +7,7 @@ export default async function Trending() {
 
   return (
     <div className="mt-6 grid-custom lg:w-[100%]">
-      {products.map((element) => (
+      {/* {products.map((element) => (
         <Card key={element.title} className="flex flex-col justify-between w-[100%] lg:w-[350px] lg:h-[500px] h-fit">
           <CardHeader>
             <CardTitle>{element.title}</CardTitle>
@@ -23,7 +23,7 @@ export default async function Trending() {
             {element.rating}
           </CardFooter>
         </Card>
-      ))}
+      ))} */}
     </div>
   );
 }

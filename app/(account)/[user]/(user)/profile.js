@@ -168,13 +168,13 @@ function Dashboard({ userDetails, user }) {
         </Button>
       </div>
       <div className="stats flex gap-3 w-fit lg:w-fit justify-between flex-wrap">
-        <div className="flex lg:flex-col lg:items-start items-center justify-center p-4 ">
+        {/* <div className="flex lg:flex-col lg:items-start items-center justify-center p-4 ">
           <div className="lg:text-5xl text-xl flex justify-center items-center">
             <FerrisWheel className="icon mr-2" />
             <span className="font-bold">4</span>
           </div>
           <span className="ml-2 text-base lg:text-xl lg:mt-4 text-left">Event Spaces Listed</span>
-        </div>
+        </div> */}
         <div className="flex lg:flex-col items-start  p-4 ">
           <div className="lg:text-5xl text-xl flex justify-center items-center">
             <Star className="icon mr-2" />

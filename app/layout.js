@@ -8,12 +8,12 @@ import { AuthProvider, useAuth } from "@/lib/context/AuthContext";
 import Header from "@/components/root/header";
 import AddListing from "@/components/root/add-listing";
 import { useSearchParams } from "next/navigation";
-
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
+  // console.log(params)
   // const {user, loading, error} = useContext(AuthContext);
 
   const searchParams = useSearchParams();

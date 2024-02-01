@@ -13,7 +13,7 @@ export default async function Page() {
       <Hero />
       <span id="discover" className=""></span>
       <section className="lg:-mx-56 lg:px-56 px-4 -mx-4 pt-8 ">
-        <div className="text-2xl font-medium">Discover Event Spaces</div>
+        {/* <div className="text-2xl font-medium">Discover Event Spaces</div> */}
         <Suspense fallback={<CardSkeleton />}>
           <Trending />
         </Suspense>

@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Link from "next/link";
+import Listings from "@/components/root/Listings";
+import { Suspense } from "react";
+
 const tabsData = {
   reviews: [
     {
@@ -101,16 +104,18 @@ export default function ProfileTabs({ user }) {
           </div>
         ) : (
           <div className="text-lg my-3 text-center block">
-            <em>You must be signed in to send a review</em>
-            {" "}
-            <Button asChild className="text-lg ml-2"><Link href="/login"> Sign In </Link></Button>
+            <em>You must be signed in to send a review</em>{" "}
+            <Button asChild className="text-lg ml-2">
+              <Link href="/login"> Sign In </Link>
+            </Button>
           </div>
         )}
         <Reviews />
       </TabsContent>
       <TabsContent value="listings" className="mt-4">
-        <div className="text-2xl font-bold">4 Current Listings</div>
-        <Listings />
+        <Suspense>
+          <Listings user={user} />
+        </Suspense>
       </TabsContent>
     </Tabs>
   );
@@ -138,6 +143,8 @@ function Reviews() {
   );
 }
 
-function Listings() {
-  return <div>Hello from the children of Earth!</div>;
-}
+// async function Listings({user}) {
+//   console.log(user);
+//   // const userListings = getUserListings();
+//   return <div>Hello from the children of Earth!</div>;
+// }

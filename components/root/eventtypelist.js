@@ -22,18 +22,22 @@ const eventTypes = [
     label: "Birthday Parties",
   },
   {
-    value: "remix",
-    label: "Remix",
+    value: "seminars",
+    label: "Seminars",
   },
   {
-    value: "astro",
-    label: "Astro",
+    value: "concerts",
+    label: "Concerts",
+  },
+  {
+    value: "any",
+    label: "Any Events",
   },
 ];
 
-export default function EventTypeList() {
+export default function EventTypeList({value, setValue}) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -44,7 +48,7 @@ export default function EventTypeList() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
-        <Command>
+        <Command required>
           <CommandInput placeholder="Search event types..." />
           <CommandEmpty>Nothing found.</CommandEmpty>
           <CommandGroup>
