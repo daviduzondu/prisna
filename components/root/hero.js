@@ -91,8 +91,8 @@ function Results({results, pending}) {
                 <div className="text-3xl mb-3">{results.length} Results Found</div>
                 <div className="flex flex-col gap-6">
                     {results.map((entry) => (
-                        <Link href={`/listing/${entry.id}`}>
-                            <div key={entry.id} className="border p-5 rounded-lg">
+                        <Link href={`/listing/${entry.id}`}  key={entry.id}>
+                            <div className="border p-5 rounded-lg">
                                 <div className="flex flex-col mb-3 gap-2">
                                     <div className="text-3xl font-semibold">{entry.name}</div>
                                     <div className="flex gap-3">
