@@ -14,7 +14,6 @@ export async function GET(request) {
 
     if (res.exists()) {
       data = res.data().listings;
-      console.log(data);
       return Response.json({ data, success: true });
     }
   } catch (e) {
