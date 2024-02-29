@@ -36,7 +36,7 @@ export default function Hero() {
                 <div className="flex flex-col justify-center mt-5 ">
                     <Image
                         src={festival}
-                        className="absolute hidden lg:block hero-img"
+                        className="absolute hidden lg:block hero-img opacity-55"
                         width={410}
                         alt="Two women at a festival"
                     />

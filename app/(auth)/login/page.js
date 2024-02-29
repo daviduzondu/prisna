@@ -48,11 +48,11 @@ export default function Page() {
     async function submitHandler({email, password}) {
         try {
             const res = await signInWithEmailAndPassword(email, password);
-            console.log(error.code)
             if (error) throw new Error(error.code);
             toast.success(`Welcome back, ${res.user.email}`);
             router.push(`/${res.user.uid}`)
         } catch (e) {
+            console.log(e);
             toast.error(getLoginErrorMessage(e.message));
         }
 
