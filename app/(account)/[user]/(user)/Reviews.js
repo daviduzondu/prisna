@@ -13,7 +13,7 @@ export default async function Reviews({uid}) {
     return (
         // <ScrollArea className="h-72 w-full rounded-md border overflow-scroll">
         <div className="h-full max-h-[700px] w-full rounded-md  overflow-y-scroll">
-            {reviews.map((review) => {
+            {reviews.reverse().map((review) => {
                 return (
                     <div className="review-item my-5" key={review.id}>
                         <div className="review-info flex gap-4">

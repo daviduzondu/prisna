@@ -15,14 +15,12 @@ export async function GET(request) {
         const listingSnapshot = (await getDocs(collectionRef));
         const listing = new Promise(res => res(listingSnapshot.docs.map(doc => doc.data().listings).flat().filter(x => x.location.toLowerCase().includes(targetLocation.toLowerCase()))));
         const lister = (await listing).lister
-        console.log("lister is", lister);
         matchingListings = (await listing);
         for (let i = 0; i < matchingListings.length; i++) {
             let match = matchingListings[i];
             const userData = await fetchUserData(match.lister);
             match = {...match, userData: userData.data}
             matchingListings[i] = match;
-            console.log(matchingListings);
         }
 
 
