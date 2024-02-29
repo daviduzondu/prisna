@@ -20,17 +20,16 @@ export default function RootLayout({ children }) {
   const showModal = searchParams.get("add");
   console.log(showModal);
   return (
-    <html lang="en">
+      <html lang="en">
       <AuthProvider>
         <body className={`${inter.className}  w-[100vw] overflow-x-hidden`}>
-          <div className="lg:mx-56 mx-4 mt-6">
-            <Header />
-            <div>{showModal === "true" ? <AddListing showModal={true} /> : ""}</div>
-            {children}
-            <Toaster position="top-center" richColors />
-          </div>
+        <div className="lg:mx-56 mx-4 mt-6">
+          <Header />
+          {children}
+          <Toaster position="top-center" richColors />
+        </div>
         </body>
       </AuthProvider>
-    </html>
+      </html>
   );
 }

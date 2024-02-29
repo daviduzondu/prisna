@@ -1,5 +1,6 @@
 import {fetchListingData} from "@/lib/data";
 import {MapPinIcon, PartyPopper} from "lucide-react";
+import Link from "next/link";
 
 export default async function Page({params}) {
 
@@ -39,13 +40,15 @@ export default async function Page({params}) {
             ))}
         </div>
         <div className="post-metadata flex gap-2 items-center mt-3">
-        <span>Listed by: </span>
-            <img
-                src={userData.pic}
-                className="w-[3em] h-[3em] rounded-full border-2 border-solid"
-                loading="lazy"
-                alt="Image"
-            />
+            <span>Listed by: </span>
+            <Link href={`/${userData.uid}`}>
+                <img
+                    src={userData.pic}
+                    className="w-[3em] h-[3em] rounded-full border-2 border-solid"
+                    loading="lazy"
+                    alt="Image"
+                />
+            </Link>
             <div className="text-base">{userData.name}</div>
             <div className="text-base">{userData.phone}</div>
         </div>

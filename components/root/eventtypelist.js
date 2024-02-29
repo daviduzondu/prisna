@@ -18,8 +18,8 @@ const eventTypes = [
     label: "Conferences",
   },
   {
-    value: "bday",
-    label: "Birthday Parties",
+    value: "birthdays",
+    label: "Birthdays",
   },
   {
     value: "seminars",
@@ -35,14 +35,14 @@ const eventTypes = [
   },
 ];
 
-export default function EventTypeList({value, setValue}) {
+export default function EventTypeList({value, setValue, variant, className}) {
   const [open, setOpen] = React.useState(false);
 
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
+        <Button variant={variant||"outline"} role="combobox" aria-expanded={open} className={`w-[200px] justify-between ${className && className }`}>
           {value ? eventTypes.find((eventType) => eventType.value === value)?.label : "Select event type..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>

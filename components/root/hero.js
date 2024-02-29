@@ -7,6 +7,7 @@ import festival from "@/public/festival.png";
 import {Filter, MapPinIcon, PartyPopper, Search} from "lucide-react";
 import {useState} from "react";
 import Link from "next/link";
+import EventTypeList from "@/components/root/eventtypelist";
 
 // import {experimental_useFormState as useFormState} from 'react-dom';
 // import { experimental_us } from "@/next.config";
@@ -16,7 +17,7 @@ export default function Hero() {
     const [location, setLocation] = useState("");
     const [data, setData] = useState(null);
     const [pending, setPending] = useState(null);
-
+    const [value, setValue] = useState("any");
     async function searchSpaces(location) {
         setPending(true);
         const response = await fetch(`/api/search?location=${location}`);
@@ -51,7 +52,7 @@ export default function Hero() {
                     <div className="flex gap-3 mt-6 justify-center lg:justify-start">
                         {/* <div></div> */}
                         <form className="w-full" onSubmit={(e) => (e.preventDefault(), searchSpaces(location))}>
-                            <div className="flex flex-col lg:flex-row w-full gap-5 z-10">
+                            <div className="flex flex-col lg:flex-row w-[70%] gap-5 z-10">
                                 <Input
                                     placeholder="Enter a location..."
                                     className="text-black flex-1 text-[17px] w-full"
@@ -59,32 +60,31 @@ export default function Hero() {
                                     onChange={(e) => (e.target.value.length === 0 && setPending(false), setLocation(e.target.value))}
                                 />
                                 <div className="flex gap-2 justify-center">
+                                    <EventTypeList value={value} setValue={setValue} variant={"primary"} className={"bg-black"} />
                                     <Button className="text-[17px] flex items-center" type="submit">
                                         <Search className="icon mr-2"/>
                                         Find Event Spaces
                                         {/* {pending ? "Searching..." : "Find Event Spaces"} */}
                                     </Button>
-                                    <Button className="text-[17px] w-fit" type="button">
-                                        <Filter className="icon"/>
-                                    </Button>
+                                    {/*<Button className="text-[17px] w-fit" type="button">*/}
+                                    {/*    <Filter className="icon"/>*/}
+                                    {/*</Button>*/}
                                 </div>
                             </div>
                         </form>
-                        {/* <Button className="text-[17px] bg-orange-400 hover:bg-orange-300">
-            <Megaphone className="icon mr-1" />
-            List a space
-          </Button> */}
                     </div>
                 </div>
             </section>
-            {data && <Results results={data} pending={pending}/>}
+            {data && <Results results={data} pending={pending} eventType={value}/>}
         </>
     );
 }
 
-function Results({results, pending}) {
+function Results({results, pending, eventType}) {
     // const [pending, setPending] = useState(false);
     // console.log("Results are:", results);
+    console.log(results.filter(x=>x.type!==eventType));
+    eventType!=="any" ? results = results.filter(x=>x.type===eventType) : results;
     if (results && results.length > 0) {
         return (
             <div className="mt-5">

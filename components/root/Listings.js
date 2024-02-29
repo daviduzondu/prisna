@@ -17,7 +17,7 @@ export default async function Listings({userID}) {
                 </div>
 
                 <div className="flex flex-col gap-6">
-                    {data.map((entry) => (
+                    {data.reverse().map((entry) => (
                         <Link href={`/listing/${entry.id}`} key={entry.id}>
                             <div className="border p-5 rounded-lg">
                                 <div className="flex flex-col mb-3 gap-2">

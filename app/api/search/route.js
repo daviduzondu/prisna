@@ -13,7 +13,7 @@ export async function GET(request) {
         // Query all documents in the collection
         // const snapshot = await getDocs(collectionRef);
         const listingSnapshot = (await getDocs(collectionRef));
-        const listing = new Promise(res => res(listingSnapshot.docs.map(doc => doc.data().listings).flat().filter(x => x.location.includes(targetLocation))));
+        const listing = new Promise(res => res(listingSnapshot.docs.map(doc => doc.data().listings).flat().filter(x => x.location.toLowerCase().includes(targetLocation.toLowerCase()))));
         const lister = (await listing).lister
         console.log("lister is", lister);
         matchingListings = (await listing);
