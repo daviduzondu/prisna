@@ -10,10 +10,8 @@ import {usePathname} from "next/navigation";
 import UniversalSkeleton from "@/components/root/skeleton";
 import Reviews from "@/app/(account)/[user]/(user)/Reviews";
 import {addNewListerReview} from "@/lib/actions";
-import {Form, useForm} from 'react-hook-form';
 export default function ProfileTabs({user, userDetails}) {
     const pathname = usePathname();
-    const {register} = useForm();
 
     return (
         <Tabs defaultValue={"reviews"}>
