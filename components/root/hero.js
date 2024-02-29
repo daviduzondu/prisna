@@ -4,7 +4,7 @@ import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import Image from "next/image";
 import festival from "@/public/festival.png";
-import {Filter, MapPinIcon, PartyPopper, Search} from "lucide-react";
+import {MapPinIcon, PartyPopper, Search} from "lucide-react";
 import {useState} from "react";
 import Link from "next/link";
 import EventTypeList from "@/components/root/eventtypelist";
@@ -18,6 +18,7 @@ export default function Hero() {
     const [data, setData] = useState(null);
     const [pending, setPending] = useState(null);
     const [value, setValue] = useState("any");
+
     async function searchSpaces(location) {
         setPending(true);
         const response = await fetch(`/api/search?location=${location}`);
@@ -60,7 +61,8 @@ export default function Hero() {
                                     onChange={(e) => (e.target.value.length === 0 && setPending(false), setLocation(e.target.value))}
                                 />
                                 <div className="flex gap-2 justify-center">
-                                    <EventTypeList value={value} setValue={setValue} variant={"primary"} className={"bg-black"} />
+                                    <EventTypeList value={value} setValue={setValue} variant={"primary"}
+                                                   className={"bg-black"}/>
                                     <Button className="text-[17px] flex items-center" type="submit">
                                         <Search className="icon mr-2"/>
                                         Find Event Spaces
@@ -75,7 +77,10 @@ export default function Hero() {
                     </div>
                 </div>
             </section>
-            {data && <Results results={data} pending={pending} eventType={value}/>}
+
+            {pending && <div className="flex mt-5 items-center justify-center text-2xl">Searching...</div>}
+            {data?.length > 0 &&  !pending && <Results results={data} pending={pending} eventType={value}/>}
+            {data?.length === 0 && !pending && <div className="flex mt-5 items-center justify-center text-2xl">Nothing found!</div>}
         </>
     );
 }
@@ -83,15 +88,17 @@ export default function Hero() {
 function Results({results, pending, eventType}) {
     // const [pending, setPending] = useState(false);
     // console.log("Results are:", results);
-    console.log(results.filter(x=>x.type!==eventType));
-    eventType!=="any" ? results = results.filter(x=>x.type===eventType) : results;
+    console.log(results.filter(x => x.type !== eventType));
+
+    eventType !== "any" ? results = results.filter(x => x.type === eventType) : results;
+
     if (results && results.length > 0) {
         return (
             <div className="mt-5">
                 <div className="text-3xl mb-3">{results.length} Results Found</div>
                 <div className="flex flex-col gap-6">
                     {results.map((entry) => (
-                        <Link href={`/listing/${entry.id}`}  key={entry.id}>
+                        <Link href={`/listing/${entry.id}`} key={entry.id}>
                             <div className="border p-5 rounded-lg">
                                 <div className="flex flex-col mb-3 gap-2">
                                     <div className="text-3xl font-semibold">{entry.name}</div>
@@ -137,13 +144,8 @@ function Results({results, pending, eventType}) {
                 </div>
             </div>
         );
+    } else {
+        return <div className="flex mt-5 items-center justify-center text-2xl">Nothing found!</div>
     }
 
-    if (pending) {
-        return <div className="flex mt-5 items-center justify-center text-2xl">Searching...</div>
-    }
-
-    if (results && results.length === 0 && pending === false) {
-        return <div className="flex mt-5 items-center justify-center text-2xl">Nothing found!</div>;
-    }
 }
